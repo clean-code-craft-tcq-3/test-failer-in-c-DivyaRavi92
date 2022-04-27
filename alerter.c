@@ -43,7 +43,6 @@ void alertInCelcius(float farenheit) {
 }
 
 int main() {
-    int ans;
     alertInCelcius(400.5);
     alertInCelcius(303.6);
     alertInCelcius(100.0);
