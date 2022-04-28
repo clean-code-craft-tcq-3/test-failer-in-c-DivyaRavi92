@@ -14,20 +14,20 @@ int printColorMap() {
     return i * j;
 }
 
-int printPairNumber(int majorColorNumber, int minorColorNumber) 
+int printColorPair(int majorColorNumber, int minorColorNumber) 
 {
-    int i = majorColorNumber, j = minorColorNumber;
-    printf("PairNumber\n");
+    int i = majorColorNumber, j = minorColorNumber, pairNumber;
+    printf("ColorPair\n");
     printf("%d | %s | %s\n", i * 5 + j, majorColor[majorColorNumber], minorColor[minorColorNumber]);
-       
-    return i * 5 + j;
+    pairNumber = i * 5 + j;   
+    return pairNumber;
 }
 
 int main() {
     int majorColorNumber = 1;
     int minorColorNumber = 2;
     int result = printColorMap();
-    int pairNumber = printPairNumber(majorColorNumber, minorColorNumber);
+    int pairNumber = printColorPair(majorColorNumber, minorColorNumber);
     assert(result == 25);
     assert(pairNumber == 8);
     printf("All is well (maybe!)\n");
