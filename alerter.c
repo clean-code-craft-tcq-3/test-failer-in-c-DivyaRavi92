@@ -10,7 +10,7 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include "alerter.h"
 #include <assert.h>
 
-
+extern int alertFailureCount;
 
 int main() {
     alertInCelcius(400.5);
