@@ -2,3 +2,4 @@
 
 
 int networkAlertStub(float celcius);
+void alertInCelcius(float farenheit);
