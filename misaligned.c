@@ -8,7 +8,7 @@ int printColorMap() {
     int i = 0, j = 0;
     for(i = 0; i < 5; i++) {
         for(j = 0; j < 5; j++) {
-            printf("%d | %s | %s\n", i * 5 + j, majorColor[i], minorColor[j]);
+            printf("%d | %s | %s\n", (i * 5 + j) + 1, majorColor[i], minorColor[j]);
         }
     }
     return i * j;
@@ -18,8 +18,8 @@ int printColorPair(int majorColorNumber, int minorColorNumber)
 {
     int i = majorColorNumber, j = minorColorNumber, pairNumber;
     printf("ColorPair\n");
-    printf("%d | %s | %s\n", i * 5 + j, majorColor[majorColorNumber], minorColor[minorColorNumber]);
-    pairNumber = i * 5 + j;   
+    printf("%d | %s | %s\n", (i * 5 + j) + 1, majorColor[majorColorNumber], minorColor[minorColorNumber]);
+    pairNumber = (i * 5 + j) + 1;   
     return pairNumber;
 }
 
