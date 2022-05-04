@@ -32,13 +32,14 @@ float tempConversion(float farenheit)
 
 void alertInCelcius(float farenheit, testEnvironment environment) {
     float celcius = tempConversion(farenheit);
+    int returnCode;
     if(environment == networkStub)
     {
-        int returnCode = networkAlertStub(celcius);
+        returnCode = networkAlertStub(celcius);
     }
     else
     {
-         int returnCode = networkAlertProduction(celcius);
+        returnCode = networkAlertProduction(celcius);
     }    
     if (returnCode != 200) {
         // non-ok response is not an error! Issues happen in life!
