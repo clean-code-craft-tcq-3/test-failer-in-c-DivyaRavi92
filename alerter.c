@@ -1,9 +1,15 @@
-#include <stdio.h>
-#include <assert.h>
+#include "alerter.h"
 
 int alertFailureCount = 0;
 
 int networkAlertStub(float celcius) {
+    
+        printf("Temperature is %.1f celcius.\n", celcius);
+        return 200;
+   
+}
+
+int networkAlertProduction(float celcius) {
     
     if(celcius < 50.0)
     {
@@ -24,9 +30,16 @@ float tempConversion(float farenheit)
   return celcius; 
 }
 
-void alertInCelcius(float farenheit) {
+void alertInCelcius(float farenheit, testEnvironment environment) {
     float celcius = tempConversion(farenheit);
-    int returnCode = networkAlertStub(celcius);
+    if(environment == networkStub)
+    {
+        int returnCode = networkAlertStub(celcius);
+    }
+    else
+    {
+         int returnCode = networkAlertProduction(celcius);
+    }    
     if (returnCode != 200) {
         // non-ok response is not an error! Issues happen in life!
         // let us keep a count of failures to report
@@ -40,10 +53,12 @@ void alertInCelcius(float farenheit) {
 
 
 int main() {
-    alertInCelcius(400.5);
-    alertInCelcius(303.6);
-    alertInCelcius(100.0);
-    assert(alertFailureCount != 0);
+    alertInCelcius(400.5, networkStub);
+    assert(alertFailureCount == 0);
+    alertInCelcius(303.6, networkProd);
+    assert(alertFailureCount == 1);
+    alertInCelcius(100.0, networkStub);
+    assert(alertFailureCount == 1);
     printf("%d alerts failed.\n", alertFailureCount);
     printf("All is well (maybe!)\n");
     return 0;
