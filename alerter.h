@@ -3,6 +3,6 @@
 
 typedef enum
 {
-  networkProd;
-  networkStub;
+  networkProd,
+  networkStub
 }testEnvironment;
